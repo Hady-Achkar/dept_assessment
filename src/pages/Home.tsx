@@ -74,10 +74,10 @@ const Home = () => {
 
 	const cases = useSelector((state: AppState) => state.cases)
 
-	const fetchCases = () => {
+	const fetchCases = useCallback(() => {
 		//@ts-ignore
 		return dispatch(startinitCases())
-	}
+	}, [dispatch])
 
 	useEffect(() => {
 		fetchCases()
