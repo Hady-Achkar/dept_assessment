@@ -93,7 +93,7 @@ const Home = () => {
 			const categoryParam = searchParams.get('category')
 			categoryParam && dispatch(groupByCategory(categoryParam))
 		}
-	}, [dispatch, search, searchParams, setSearchParams])
+	}, [dispatch, search, searchParams, setSearchParams, fetchCases])
 
 	return (
 		<div>
