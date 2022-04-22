@@ -69,29 +69,10 @@ const Home = () => {
 	console.log(selectedCategory, selectedCompany)
 
 	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setSearch({...search, category: e.target.value})
-	}
-
-	const handleBla = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setSearch({...search, company: e.target.value})
-	}
-
-	const handleAppendData = () => {
-		const params = new URLSearchParams()
-		Object.entries(filters).forEach((item) => {
-			return params.append(item[0], item[1])
-		})
-		return params.toString()
-	}
-
-	const handleAddFilter = () => {
-		dispatch(addCategoryQuery('Design'))
-		dispatch(addCompanyQuery('Dept'))
+		setSearch({...search, [e.target.id]: e.target.value})
 	}
 
 	const cases = useSelector((state: AppState) => state.cases)
-
-	console.log(cases)
 
 	const fetchCases = () => {
 		//@ts-ignore
@@ -118,20 +99,20 @@ const Home = () => {
 		<div>
 			{data.length}
 			<img src={data[0].image} alt="" />
-			<button onClick={handleAddFilter}>add filter</button>
 			<select
 				onChange={handleSelect}
 				className="ant-input selectBox"
 				style={{width: 200}}
 				placeholder="Select a person"
+				id="category"
 			>
 				<option value="Design">Design</option>
 				<option value="Advertising">Advertising</option>
 			</select>
 
-			<button onClick={handleAppendData}>append data</button>
 			<select
-				onChange={handleBla}
+				onChange={handleSelect}
+				id="company"
 				className="ant-input selectBox"
 				style={{width: 200}}
 				placeholder="Select a person"
