@@ -1,78 +1,22 @@
-import React, {useState, useCallback, useEffect, useMemo} from 'react'
-import mockData from '../data/mock.json'
-import {useLocation, useNavigate, useSearchParams, Link} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import React, {useState, useCallback, useEffect} from 'react'
+import {useSearchParams} from 'react-router-dom'
 import {AppState} from '../reducers'
-import {useDispatch} from 'react-redux'
-import {
-	filterByCompany,
-	groupByCategory,
-	initCases,
-	startinitCases,
-} from '../actions'
-import {
-	addCategoryQuery,
-	addCompanyQuery,
-	initFilter,
-} from '../actions/queryActions'
+import {useDispatch, useSelector} from 'react-redux'
+import {filterByCompany, groupByCategory, startinitCases} from '../actions'
 
 const Home = () => {
-	const [data, setData] = useState(mockData)
 	const [searchParams, setSearchParams] = useSearchParams()
-	const location = useLocation()
-	const query = useMemo(
-		() => new URLSearchParams(location.search),
-		[location.search]
-	)
-
-	const q = query.get('q')
-	const navigate = useNavigate()
-
+	const cases = useSelector((state: AppState) => state.cases)
 	const dispatch = useDispatch()
-
-	// useEffect(() => {
-	// 	if (query.has('q')) {
-	// 		console.log(q)
-	// 	} else {
-	// 		console.log('nothing')
-	// 	}
-	// }, [query, q])
-	// const handleClick = useCallback(() => {
-	// 	setData(data.filter((item) => item.id <= 5))
-	// }, [data])
-
-	const filters = useSelector((state: AppState) => state.filter)
-
-	console.log(Object.entries(filters))
-
-	const handleClick = () => {
-		dispatch(groupByCategory('Design'))
-	}
-
-	const handleClick2 = () => {
-		dispatch(filterByCompany('Dept'))
-	}
-
-	const handleReset = () => {
-		//@ts-ignore
-		dispatch(startinitCases())
-	}
-
-	const [selectedCategory, setSelectedCategory] = useState('')
-	const [selectedCompany, setSelectedCompany] = useState('')
 
 	const [search, setSearch] = useState({
 		company: '',
 		category: '',
 	})
 
-	console.log(selectedCategory, selectedCompany)
-
 	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setSearch({...search, [e.target.id]: e.target.value})
 	}
-
-	const cases = useSelector((state: AppState) => state.cases)
 
 	const fetchCases = useCallback(() => {
 		//@ts-ignore
@@ -97,8 +41,6 @@ const Home = () => {
 
 	return (
 		<div>
-			{data.length}
-			<img src={data[0].image} alt="" />
 			<select
 				onChange={handleSelect}
 				className="ant-input selectBox"
