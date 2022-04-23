@@ -3,6 +3,7 @@ import {useSearchParams} from 'react-router-dom'
 import {AppState} from '../reducers'
 import {useDispatch, useSelector} from 'react-redux'
 import {filterByCompany, groupByCategory, startinitCases} from '../actions'
+import Header from '../components/common/Header'
 
 const Home = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -41,6 +42,7 @@ const Home = () => {
 
 	return (
 		<div>
+			<Header />
 			<select
 				onChange={handleSelect}
 				className="ant-input selectBox"
