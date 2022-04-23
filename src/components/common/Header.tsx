@@ -16,7 +16,7 @@ const Header = () => {
 	const [display, setDisplay] = useState<string>('none')
 	const show = useBreakpointValue({base: 'none', md: 'flex'})
 	return (
-		<Box paddingY="1rem" paddingX="1rem">
+		<Box bgColor="transparent" paddingY="1rem" paddingX="1rem">
 			<Flex justifyContent="space-between" alignItems="center">
 				<Flex>
 					<svg
