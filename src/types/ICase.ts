@@ -4,4 +4,5 @@ export interface ICase {
 	company: string
 	category: string
 	description: string
+	image: string
 }
