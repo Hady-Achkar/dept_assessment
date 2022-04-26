@@ -1,11 +1,21 @@
-import {Flex, useBreakpointValue, Box, Heading, Button} from '@chakra-ui/react'
+import {
+	Flex,
+	useBreakpointValue,
+	Box,
+	Heading,
+	Button,
+	useMediaQuery,
+	Container,
+} from '@chakra-ui/react'
 import {motion, useAnimation} from 'framer-motion'
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
+import {images} from '../../constants'
 import {useIntersectionObserver} from '../../hooks'
 import Header from '../common/Header'
 
 const Hero = () => {
-	const HeaderImage = require('../../assets/images/Header.png')
+	const HeaderImage = images.headerDesktop.src
+	const mobileImage = images.headerMobile.src
 	const containerVariants = {
 		hidden: {opacity: 0},
 		visible: {
@@ -27,9 +37,9 @@ const Hero = () => {
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {})
-	console.log(entry)
 
 	const isVisible = !!entry?.isIntersecting
+	const [isDesktopView] = useMediaQuery('(min-width: 700px)')
 
 	useEffect(() => {
 		if (isVisible) {
@@ -37,56 +47,70 @@ const Hero = () => {
 		}
 	}, [controls, isVisible])
 	return (
-		<Box
-			as={motion.div}
-			initial="hidden"
-			animate={controls}
-			ref={ref}
-			variants={containerVariants}
-			padding="1rem"
-			maxW={'full'}
-			h={'100vh'}
-			backgroundImage={HeaderImage}
-			backgroundSize={'cover'}
-			backgroundPosition={'center'}
-			marginX="auto"
-			position="relative"
-		>
-			<Header />
-			<Flex justifyContent={'center'} maxW={'4xl'} h="75vh">
-				<Heading
-					color={'blackAlpha.900'}
-					fontWeight="normal"
-					className="font-teko"
-					lineHeight={'575px'}
-					marginY="auto"
-					fontSize={useBreakpointValue({
-						base: '64px',
-						md: '128px',
-						lg: '400px',
-					})}
-				>
-					WORK
-				</Heading>
-			</Flex>
-			<Flex
-				justifyContent={useBreakpointValue({base: 'center', md: 'flex-end'})}
-				maxW="7xl"
+		<Box maxW={'100%'} maxH={'100vh'}>
+			<Box
+				as={motion.div}
+				initial="hidden"
+				animate={controls}
+				ref={ref}
+				variants={containerVariants}
+				padding={useBreakpointValue({base: '0', lg: '1rem'})}
+				backgroundImage={useBreakpointValue({
+					base: mobileImage,
+					lg: HeaderImage,
+				})}
+				backgroundSize={'cover'}
+				backgroundPosition={'right'}
+				backgroundRepeat="no-repeat"
+				marginX="auto"
+				position="relative"
 			>
-				<Button
-					marginX="15px"
-					position="absolute"
-					bottom="10"
-					right="10"
-					height="55px"
-					width="169px"
-					borderRadius="0"
-					bgColor="black"
-					color="white"
-				>
-					VIEW CASE
-				</Button>
-			</Flex>
+				<Header />
+				<Flex justifyContent={'center'} maxW={'4xl'} h="75vh">
+					<Heading
+						color={'black'}
+						fontWeight="normal"
+						className="font-teko"
+						lineHeight={'575px'}
+						marginY="auto"
+						fontSize={useBreakpointValue({
+							base: '170px',
+							lg: '400px',
+						})}
+					>
+						WORK
+					</Heading>
+				</Flex>
+				{isDesktopView && (
+					<Button
+						marginX={'15px'}
+						position={'absolute'}
+						bottom={'10'}
+						right={'10'}
+						height="55px"
+						width={'169px'}
+						borderRadius="0"
+						bgColor="black"
+						color="white"
+					>
+						VIEW CASE
+					</Button>
+				)}
+			</Box>
+			{!isDesktopView && (
+				<Container>
+					<Button
+						marginTop="20px"
+						height="55px"
+						width={'100%'}
+						borderRadius="0"
+						bgColor="black"
+						color="white"
+					>
+						VIEW CASE
+					</Button>
+				</Container>
+			)}
 		</Box>
 	)
 }

@@ -21,7 +21,7 @@ const CaseCard: React.FC<Props> = ({data}) => {
 	const {title, image, text} = data
 
 	const imageWidth = useBreakpointValue({
-		base: '400px',
+		base: '100%',
 		md: '400px',
 		lg: '800px',
 	})
@@ -43,8 +43,8 @@ const CaseCard: React.FC<Props> = ({data}) => {
 					/>
 				) : null}
 
-				<Box paddingY="6">
-					<Flex mt="1">
+				<Box paddingY="16px">
+					<Flex mt="1" paddingBottom="16px">
 						<Box
 							fontSize="15px"
 							fontWeight="700"

@@ -1,20 +1,29 @@
 import {Image} from '@chakra-ui/image'
 import {Container, Flex, Heading, SimpleGrid, Text} from '@chakra-ui/layout'
-import {useBreakpointValue} from '@chakra-ui/media-query'
-import React from 'react'
+import {useBreakpointValue, useMediaQuery} from '@chakra-ui/media-query'
+import React, {useEffect, useState} from 'react'
 import {images} from '../../constants'
 
 const Clients: React.FC = () => {
+	const [isDesktopView] = useMediaQuery('(min-width: 960px)')
 	const {logos} = images
+
+	const [sliced, setSliced] = useState(logos)
+	useEffect(() => {
+		if (!isDesktopView) {
+			setSliced((s) => s.filter((item, index) => index < 6))
+		} else {
+			setSliced(logos)
+		}
+	}, [isDesktopView, logos])
+
 	return (
 		<Flex
 			alignItems="center"
-			marginY="auto"
-			height="100vh"
+			height={useBreakpointValue({base: 'auto', lg: '100vh'})}
 			bgColor="#F0F4F4"
-			maxW="full"
 		>
-			<Container maxW="5xl">
+			<Container marginY={useBreakpointValue({base: '26px', lg: 0})}>
 				<Heading
 					marginBottom="1rem"
 					fontWeight="normal"
@@ -40,10 +49,15 @@ const Clients: React.FC = () => {
 					justifyContent="center"
 					paddingY="4rem"
 				>
-					{logos.map((item, index) => {
+					{sliced.map((item, index) => {
 						return (
 							<Container key={index}>
-								<Image textAlign="center" src={item} />
+								<Image
+									marginY="auto"
+									marginX="auto"
+									textAlign="center"
+									src={item}
+								/>
 							</Container>
 						)
 					})}

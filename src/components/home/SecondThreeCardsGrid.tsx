@@ -5,7 +5,7 @@ import {CaseCard} from '..'
 import {cases} from '../../data/mock'
 import {useIntersectionObserver} from '../../hooks'
 
-const FirstThreeCardsGrid = () => {
+const SecondThreeCardsGrid = () => {
 	const containerVariants = {
 		hidden: {opacity: 0, scale: 1},
 		visible: {
@@ -40,40 +40,42 @@ const FirstThreeCardsGrid = () => {
 		>
 			<Grid
 				templateRows={useBreakpointValue({
-					base: 'repeat(2, 1fr)',
+					base: 'repeat(1, 1fr)',
 					lg: 'repeat(3, 1fr)',
 				})}
 				templateColumns={useBreakpointValue({
 					base: 'repeat(1, 1fr)',
 					lg: 'repeat(20, 1fr)',
 				})}
-				gap={5}
+				rowGap={5}
+				columnGap={useBreakpointValue({base: 1, lg: 5})}
 				marginX="auto"
 				marginY="80px"
 			>
+				<GridItem borderY="2px" borderColor="gray.100" colSpan={9} rowSpan={1}>
+					<CaseCard data={cases.butlins} />
+				</GridItem>
 				<GridItem
 					colSpan={11}
-					rowSpan={3}
-					paddingRight={useBreakpointValue({base: 0, lg: '40px'})}
+					rowSpan={useBreakpointValue({base: 1, lg: 3})}
+					paddingRight={useBreakpointValue({base: '0', lg: '40px'})}
 					paddingLeft="10px"
+					borderBottom={useBreakpointValue({base: '2px', lg: 0})}
+					borderColor="gray.100"
 				>
 					<CaseCard data={cases.florensis} />
 				</GridItem>
-				<GridItem borderY="2px" borderColor="gray.100" colSpan={9} rowSpan={1}>
-					<CaseCard data={cases.microsoft} />
-				</GridItem>
-
 				<GridItem
 					borderBottom="2px"
 					borderColor="gray.100"
 					colSpan={9}
 					rowSpan={1}
 				>
-					<CaseCard data={cases.oneill} />
+					<CaseCard data={cases.vananseselect} />
 				</GridItem>
 			</Grid>
 		</Box>
 	)
 }
 
-export default FirstThreeCardsGrid
+export default SecondThreeCardsGrid
