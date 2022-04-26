@@ -64,7 +64,6 @@ const Header = () => {
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {})
-	console.log(entry)
 
 	const isVisible = !!entry?.isIntersecting
 
@@ -86,7 +85,11 @@ const Header = () => {
 	const show = useBreakpointValue({base: 'none', md: 'flex'})
 
 	return (
-		<Box bgColor="transparent" paddingY="32px" paddingX="36px">
+		<Box
+			bgColor={useBreakpointValue({base: 'white', lg: 'transparent'})}
+			paddingY="32px"
+			paddingX="36px"
+		>
 			<Flex marginY="28px" justifyContent="space-between" alignItems="center">
 				<Flex>
 					<svg

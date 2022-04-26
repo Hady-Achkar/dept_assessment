@@ -6,7 +6,7 @@ import {CaseCard} from '..'
 import {cases} from '../../data/mock'
 import {useIntersectionObserver} from '../../hooks'
 
-const FourCardsGrid = () => {
+const SecondFourCardsGrid = () => {
 	const squareVariants = {
 		visible: {opacity: 1, transition: {duration: 3}},
 		hidden: {opacity: 0},
@@ -58,20 +58,20 @@ const FourCardsGrid = () => {
 				spacingX="10"
 			>
 				<Box variants={cardVariants} as={motion.div}>
-					<CaseCard data={cases.bolcom} />
+					<CaseCard data={cases.chocomel} />
 				</Box>
 				<Box variants={cardVariants} as={motion.div}>
-					<CaseCard data={cases.kempen} />
+					<CaseCard data={cases.jbl} />
 				</Box>
 				<Box variants={cardVariants} as={motion.div}>
-					<CaseCard data={cases.philips} />
+					<CaseCard data={cases.zalando} />
 				</Box>
 				<Box variants={cardVariants} as={motion.div}>
-					<CaseCard data={cases.gemeentemuseum} />
+					<CaseCard data={cases.koninklijkeBibliotheek} />
 				</Box>
 			</SimpleGrid>
 		</Box>
 	)
 }
 
-export default FourCardsGrid
+export default SecondFourCardsGrid

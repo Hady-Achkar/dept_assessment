@@ -7,6 +7,7 @@ import {
 	Square,
 } from '@chakra-ui/layout'
 import {
+	Button,
 	FormControl,
 	FormErrorMessage,
 	FormHelperText,
@@ -44,22 +45,31 @@ const Contact: React.FC = () => {
 		e.preventDefault()
 	}
 	return (
-		<Flex color="white" alignItems="center" marginY="72px">
+		<Container
+			maxW="100%"
+			display={useBreakpointValue({base: 'block', lg: 'flex'})}
+			color="white"
+			alignItems="center"
+			marginY="72px"
+			marginX="auto"
+		>
 			<Box
-				textAlign="center"
 				className="font-teko"
 				fontWeight="400"
-				fontSize="60px"
+				fontSize={useBreakpointValue({base: '30px', lg: '60px'})}
 				flex="1"
 				lineHeight="86px"
 				color="black"
 			>
-				<Text>QUESTION?</Text>
-				<Text> WE ARE HERE</Text>
-				<Text> TO HELP!</Text>
+				<Text
+					textAlign="center"
+					maxW={useBreakpointValue({base: 'auto', lg: '300px'})}
+				>
+					QUESTION? WE ARE HERE TO HELP!
+				</Text>
 			</Box>
 			<Box flex="2">
-				<form color="black" className="font-teko" onSubmit={handleSubmit}>
+				<form color="black" onSubmit={handleSubmit}>
 					<SimpleGrid columns={useBreakpointValue({base: 1, lg: 2})} gap="4">
 						<FormControl isInvalid={isError}>
 							<FormLabel color="black" htmlFor="name">
@@ -103,9 +113,23 @@ const Contact: React.FC = () => {
 							/>
 						</FormControl>
 					</SimpleGrid>
+					<Button
+						bgColor="#1A18F7"
+						color="white"
+						width="154px"
+						height="55px"
+						marginTop="38px"
+						borderRadius="0"
+						type="submit"
+						_hover={{opacity: 0.8}}
+						fontWeight="bold"
+						fontSize="15px"
+					>
+						SEND
+					</Button>
 				</form>
 			</Box>
-		</Flex>
+		</Container>
 	)
 }
 
