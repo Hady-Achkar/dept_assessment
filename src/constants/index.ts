@@ -1,11 +1,32 @@
 export const navigation = [
-	'home',
-	'werk',
-	'over',
-	'diensten',
-	'partners',
-	'stories',
-	'vacatures',
+	{
+		name: 'home',
+		href: '/',
+	},
+	{
+		name: 'werk',
+		href: '/werk',
+	},
+	{
+		name: 'over',
+		href: '/over',
+	},
+	{
+		name: 'diensten',
+		href: '/diensten',
+	},
+	{
+		name: 'partners',
+		href: '/partners',
+	},
+	{
+		name: 'stories',
+		href: '/stories',
+	},
+	{
+		name: 'vacatures',
+		href: '/vacatures',
+	},
 ]
 
 export const countries = [
@@ -18,23 +39,63 @@ export const countries = [
 	'schweiz',
 ]
 
+export const icons = {
+	instagram: {src: require('../assets/Icons/instagram.png')},
+	facebook: {src: require('../assets/Icons/facebook.png')},
+	twitter: {src: require('../assets/Icons/twitter.png')},
+	dept: {src: require('../assets/Icons/dept.png')},
+	burger: {src: require('../assets/Icons/burger.png')},
+	arrow: {src: require('../assets/Icons/arrow.png')},
+	arrowBlue: {src: require('../assets/Icons/arrow-blue.png')},
+}
+
 export const socials = ['facebook', 'instagram', 'twitter', 'linkedin']
 
-export const images = [
-	{src: require('../assets/images/arla.png'), name: 'arla'},
-	{src: require('../assets/images/bolcom.png'), name: 'bolcom'},
-	{src: require('../assets/images/chocomel.png'), name: 'chocomel'},
-	{src: require('../assets/images/florensis.png'), name: 'florensis'},
-	{src: require('../assets/images/gemeentemuseum.png'), name: 'gemeentemuseum'},
-	{src: require('../assets/images/jbl.png'), name: 'jbl'},
-	{src: require('../assets/images/kempen.png'), name: 'kempen'},
-	{
+export const images = {
+	arla: {src: require('../assets/images/arla.png'), name: 'arla'},
+	bolcom: {src: require('../assets/images/bolcom.png'), name: 'bolcom'},
+	chocomel: {src: require('../assets/images/chocomel.png'), name: 'chocomel'},
+	florensis: {
+		src: require('../assets/images/florensis.png'),
+		name: 'florensis',
+	},
+	gemeentemuseum: {
+		src: require('../assets/images/gemeentemuseum.png'),
+		name: 'gemeentemuseum',
+	},
+	jbl: {src: require('../assets/images/jbl.png'), name: 'jbl'},
+	kempen: {src: require('../assets/images/kempen.png'), name: 'kempen'},
+	koninklijkeBibliotheek: {
 		src: require('../assets/images/koninklijke-bibliotheek.png'),
 		name: 'koninklijke-bibliotheek',
 	},
-	{src: require('../assets/images/liberty-global.png'), name: 'liberty-global'},
-	{src: require('../assets/images/lightning.png'), name: 'lightning'},
-	{src: require('../assets/images/philips.png'), name: 'philips'},
-	{src: require('../assets/images/tui.png'), name: 'tui'},
-	{src: require('../assets/images/zalando.png'), name: 'zalando'},
-]
+	libertyGlobal: {
+		src: require('../assets/images/liberty-global.png'),
+		name: 'liberty-global',
+	},
+	lightning: {
+		src: require('../assets/images/lightning.png'),
+		name: 'lightning',
+	},
+	philips: {src: require('../assets/images/philips.png'), name: 'philips'},
+	tui: {src: require('../assets/images/tui.png'), name: 'tui'},
+	zalando: {src: require('../assets/images/zalando.png'), name: 'zalando'},
+	logos: [
+		require('../assets/logos/ABN_logo_zwart.png'),
+		require('../assets/logos/Adidas_logo_zwart.png'),
+		require('../assets/logos/KLM_logo_zwart.png'),
+		require('../assets/logos/Microsoft_logo_zwart.png'),
+		require('../assets/logos/Mona_logo_zwart.png'),
+		require('../assets/logos/Nivea_logo_zwart.png'),
+		require('../assets/logos/NN_logo_zwart.png'),
+		require('../assets/logos/Oxxio_logo_zwart.png'),
+		require('../assets/logos/Pathe_logo_zwart.png'),
+		require('../assets/logos/Tomtom_logo_zwart.png'),
+		require('../assets/logos/Transavia_logo_zwart.png'),
+		require('../assets/logos/Triumph_logo_zwart.png'),
+		require('../assets/logos/Unilever_logo_zwart.png'),
+		require('../assets/logos/Walibi_logo_zwart.png'),
+		require('../assets/logos/Zalando_logo_zwart.png'),
+		require('../assets/logos/Ziggo_logo_zwart.png'),
+	],
+}
