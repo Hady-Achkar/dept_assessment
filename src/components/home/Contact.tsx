@@ -16,8 +16,10 @@ import {
 	Text,
 	Textarea,
 	useBreakpointValue,
+	useToast,
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
+import {addContact} from '../../services/contactsService'
 
 interface ContactData {
 	email: string
@@ -25,15 +27,20 @@ interface ContactData {
 	message: string
 }
 const Contact: React.FC = () => {
-	const [contactData, setContactData] = useState<ContactData>({
+	const initContactData = {
 		email: '',
 		name: '',
 		message: '',
-	})
+	}
+	const [contactData, setContactData] = useState<ContactData>(initContactData)
+	const [showError, setShowError] = useState(false)
 
 	const handleInputChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => setContactData({...contactData, [e.target.id]: e.target.value})
+	) => {
+		setShowError(true)
+		setContactData({...contactData, [e.target.id]: e.target.value})
+	}
 
 	const [isError, setIsErrorTo] = useState<boolean>(false)
 	// Object.values(contactData).forEach((element) => {
@@ -41,8 +48,29 @@ const Contact: React.FC = () => {
 	// })
 
 	const {email, name, message} = contactData
+	const toast = useToast()
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
+		addContact(contactData)
+			.then((res) => {
+				toast({
+					title: 'Contact was sent!',
+					description: 'We will get back to you in no time!',
+					status: 'success',
+					duration: 4000,
+					isClosable: true,
+				})
+				setContactData(initContactData)
+			})
+			.catch((err) => {
+				toast({
+					title: 'Error!',
+					description: `Error ${err.message} sending the contact`,
+					status: 'error',
+					duration: 4000,
+					isClosable: true,
+				})
+			})
 	}
 	return (
 		<Container
@@ -71,7 +99,7 @@ const Contact: React.FC = () => {
 			<Box flex="2">
 				<form color="black" onSubmit={handleSubmit}>
 					<SimpleGrid columns={useBreakpointValue({base: 1, lg: 2})} gap="4">
-						<FormControl isInvalid={isError}>
+						<FormControl isInvalid={showError && contactData.name === ''}>
 							<FormLabel color="black" htmlFor="name">
 								Name
 							</FormLabel>
@@ -84,8 +112,11 @@ const Contact: React.FC = () => {
 								color="black"
 								focusBorderColor="black"
 							/>
+							{showError && contactData.name === '' && (
+								<FormErrorMessage>Name is required.</FormErrorMessage>
+							)}
 						</FormControl>
-						<FormControl isInvalid={isError}>
+						<FormControl isInvalid={showError && contactData.email === ''}>
 							<FormLabel color="black" htmlFor="email">
 								Email
 							</FormLabel>
@@ -98,9 +129,12 @@ const Contact: React.FC = () => {
 								color="black"
 								focusBorderColor="black"
 							/>
+							{showError && contactData.email === '' && (
+								<FormErrorMessage>Email is required.</FormErrorMessage>
+							)}
 						</FormControl>
-						<FormControl>
-							<FormLabel color="black" htmlFor="email">
+						<FormControl isInvalid={showError && contactData.message === ''}>
+							<FormLabel color="black" htmlFor="message">
 								Message
 							</FormLabel>
 							<Textarea
@@ -111,6 +145,9 @@ const Contact: React.FC = () => {
 								color="black"
 								focusBorderColor="black"
 							/>
+							{showError && contactData.message === '' && (
+								<FormErrorMessage>Message is required.</FormErrorMessage>
+							)}
 						</FormControl>
 					</SimpleGrid>
 					<Button
@@ -124,6 +161,11 @@ const Contact: React.FC = () => {
 						_hover={{opacity: 0.8}}
 						fontWeight="bold"
 						fontSize="15px"
+						disabled={
+							contactData.email === '' ||
+							contactData.name === '' ||
+							contactData.message === ''
+						}
 					>
 						SEND
 					</Button>

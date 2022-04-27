@@ -1,8 +1,9 @@
 export interface ICase {
-	id: number | string
+	_id: string
 	title: string
-	company: string
-	category: string
+	content: string
+	thumbnail: string
 	description: string
-	image: string
+	work: string
+	industry: string
 }

@@ -101,3 +101,32 @@ export const images = {
 		require('../assets/logos/KLM_logo_zwart.png'),
 	],
 }
+
+export const ApiEndpoints = {
+	CONTACTS: {
+		BASE_URL: 'http://localhost:5000/contacts',
+		ADD_CONTACT: {
+			URL: '/',
+			METHOD: 'POST',
+		},
+		GET_CONTACTS: {
+			URL: '/',
+			METHOD: 'GET',
+		},
+	},
+	CASES: {
+		BASE_URL: 'http://localhost:5000/cases',
+		ADD_CASE: {
+			URL: '/',
+			METHOD: 'POST',
+		},
+		GET_CASES: {
+			URL: '/',
+			METHOD: 'GET',
+		},
+		GET_CASE: {
+			URL: '/case',
+			METHOD: 'GET',
+		},
+	},
+}

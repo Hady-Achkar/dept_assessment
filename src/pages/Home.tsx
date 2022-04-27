@@ -1,8 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react'
-import {useSearchParams} from 'react-router-dom'
-import {AppState} from '../reducers'
-import {useDispatch, useSelector} from 'react-redux'
-import {filterByCompany, groupByCategory, startinitCases} from '../actions'
+import React from 'react'
 import {
 	CaseCard,
 	ClientsSection,
@@ -17,47 +13,12 @@ import {Select} from '@chakra-ui/select'
 import {Flex, HStack, SimpleGrid, Text} from '@chakra-ui/layout'
 import {useBreakpointValue} from '@chakra-ui/media-query'
 import {cases as mockCases} from '../data/mock'
-import {Container, Grid, GridItem} from '@chakra-ui/react'
+import {Container} from '@chakra-ui/react'
 import Contact from '../components/home/Contact'
 
 const Home = () => {
-	const [searchParams, setSearchParams] = useSearchParams()
-	const cases = useSelector((state: AppState) => state.cases)
-	const dispatch = useDispatch()
-
-	const [search, setSearch] = useState({
-		company: '',
-		category: '',
-	})
-
 	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setSearch({...search, [e.target.id]: e.target.value})
-	}
-
-	const fetchCases = useCallback(() => {
-		//@ts-ignore
-		return dispatch(startinitCases())
-	}, [dispatch])
-
-	useEffect(() => {
-		fetchCases()
-		const {company, category} = search
-		if (company !== '' || category !== '') {
-			setSearchParams(search)
-		}
-		if (searchParams.has('company')) {
-			const companyParam = searchParams.get('company')
-			companyParam && dispatch(filterByCompany(companyParam))
-		}
-		if (searchParams.has('company')) {
-			const categoryParam = searchParams.get('category')
-			categoryParam && dispatch(groupByCategory(categoryParam))
-		}
-	}, [dispatch, search, searchParams, setSearchParams, fetchCases])
-
-	const handleReset = () => {
-		//@ts-ignore
-		dispatch(startinitCases())
+		console.log('Hello world')
 	}
 
 	const fontSize = useBreakpointValue({base: '24px', lg: '30px'})
@@ -155,7 +116,10 @@ const Home = () => {
 				</SimpleGrid>
 			</Container>
 			<ClientsSection />
-			<Container paddingX={useBreakpointValue({base: '36px', lg: '80px'})}>
+			<Container
+				maxW="full"
+				paddingX={useBreakpointValue({base: '36px', lg: '80px'})}
+			>
 				<Contact />
 			</Container>
 			<Footer />

@@ -8,7 +8,7 @@ import {
 	Container,
 } from '@chakra-ui/react'
 import {motion, useAnimation} from 'framer-motion'
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useRef} from 'react'
 import {images} from '../../constants'
 import {useIntersectionObserver} from '../../hooks'
 import Header from '../common/Header'
@@ -26,13 +26,7 @@ const Hero = () => {
 			},
 		},
 	}
-	const cardVariants = {
-		hidden: {opacity: 0},
-		visible: {
-			opacity: 1,
-			duration: 0.6,
-		},
-	}
+
 	const controls = useAnimation()
 
 	const ref = useRef<HTMLDivElement | null>(null)
