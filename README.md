@@ -5,7 +5,7 @@ The frontend assessment is divided into **TWO sections**,
 ## Frontend Code 
 
  - Repository: https://github.com/hady-achkar/dept_assessment
- - Live: https://dept-api.abaalltheway.com
+ - Live: https://dept.abaalltheway.com
 
 ### Visual Development
 
