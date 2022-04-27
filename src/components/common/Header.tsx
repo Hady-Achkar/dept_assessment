@@ -21,7 +21,7 @@ const Header = () => {
 	const navigate = useNavigate()
 	const variants = {
 		containerVariants: {
-			hidden: {opacity: 1, scale: 1},
+			hidden: {opacity: 0, scale: 1},
 			visible: {
 				opacity: 1,
 				scale: 1,
@@ -59,10 +59,21 @@ const Header = () => {
 				},
 			},
 		},
+		headerVariant: {
+			hidden: {y: -1000},
+			visible: {
+				y: 0,
+				transition: {
+					delay: 0.4,
+					duration: 0.5,
+				},
+			},
+		},
 	}
 
 	const controls = useAnimation()
 	const menuControls = useAnimation()
+	const headerControls = useAnimation()
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {})
@@ -72,6 +83,7 @@ const Header = () => {
 	const [display, setDisplay] = useState<string>('none')
 
 	useEffect(() => {
+		headerControls.start('visible')
 		if (isVisible) {
 			controls.start('visible')
 		} else {
@@ -82,7 +94,7 @@ const Header = () => {
 		} else {
 			menuControls.start('hidden')
 		}
-	}, [controls, isVisible, display, menuControls])
+	}, [controls, isVisible, display, menuControls, headerControls])
 
 	const show = useBreakpointValue({base: 'none', md: 'flex'})
 
@@ -91,6 +103,11 @@ const Header = () => {
 			bgColor={useBreakpointValue({base: 'white', lg: 'transparent'})}
 			paddingY="32px"
 			paddingX="36px"
+			as={motion.div}
+			ref={ref}
+			animate={headerControls}
+			initial="hidden"
+			variants={variants.headerVariant}
 		>
 			<Flex marginY="28px" justifyContent="space-between" alignItems="center">
 				<Flex>

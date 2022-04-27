@@ -4,7 +4,6 @@ import {
 	Flex,
 	HStack,
 	SimpleGrid,
-	Stack,
 	Text,
 	Button,
 	FormControl,
@@ -21,16 +20,12 @@ import {
 	Textarea,
 	VStack,
 	useToast,
-} from '@chakra-ui/react'
-import React, {useCallback, useEffect, useState} from 'react'
-import {Footer, Header, NewCard} from '../components'
-import {
 	IconButton,
-	Radio,
-	RadioGroup,
 	Select,
 	useBreakpointValue,
 } from '@chakra-ui/react'
+import React, {useCallback, useEffect, useState} from 'react'
+import {Footer, Header, NewCard} from '../components'
 import {addCase, CasePayload} from '../services/casesService'
 import {useSearchParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
@@ -109,7 +104,7 @@ const Technical = () => {
 	}
 	const dispatch = useDispatch()
 
-	const {cases, loading} = useSelector((state: AppState) => state.cases)
+	const {cases} = useSelector((state: AppState) => state.cases)
 
 	const fetchCases = useCallback(() => {
 		//@ts-ignore
