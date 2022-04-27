@@ -71,16 +71,13 @@ const Case = () => {
 	return (
 		<Box>
 			<Header />
-			<Flex justify="space-between" paddingX="40px">
-				<HStack
-					_hover={{opacity: 0.9, cursor: 'pointer', fontWeight: '600'}}
+			<Flex align="center" justify="space-between" paddingX="40px">
+				<IconButton
+					_hover={{opacity: 0.9, cursor: 'pointer'}}
 					onClick={() => navigate(-1)}
-					align="center"
-					spacing="3"
-				>
-					<IconButton aria-label="go-back" icon={<ArrowBackIcon />} />
-					<Text>Back</Text>
-				</HStack>
+					aria-label="go-back"
+					icon={<ArrowBackIcon />}
+				/>
 				<Flex marginY="25px" marginX="auto" justify="flex-start">
 					<Box>
 						<Text fontWeight="400px" color="#939393">
