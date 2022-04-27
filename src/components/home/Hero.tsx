@@ -82,25 +82,28 @@ const Hero = () => {
 					</Heading>
 				</Flex>
 				{isDesktopView && (
-					<Button
-						marginX={'15px'}
-						position={'absolute'}
-						bottom={'10'}
-						right={'10'}
-						height="55px"
-						width={'169px'}
-						borderRadius="0"
-						bgColor="black"
-						color="white"
-					>
-						VIEW CASE
-					</Button>
+					<Container paddingX={'80px'}>
+						<Button
+							marginX="auto"
+							position={'absolute'}
+							bottom={'10'}
+							right={'10'}
+							height="55px"
+							width={'169px'}
+							borderRadius="0"
+							bgColor="black"
+							color="white"
+						>
+							VIEW CASE
+						</Button>
+					</Container>
 				)}
 			</Box>
 			{!isDesktopView && (
-				<Container>
+				<Container paddingX={'36px'}>
 					<Button
 						marginTop="20px"
+						marginX="auto"
 						height="55px"
 						width={'100%'}
 						borderRadius="0"
