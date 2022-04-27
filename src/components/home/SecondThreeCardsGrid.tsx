@@ -63,7 +63,7 @@ const SecondThreeCardsGrid = () => {
 					borderBottom={useBreakpointValue({base: '2px', lg: 0})}
 					borderColor="gray.100"
 				>
-					<CaseCard data={cases.florensis} />
+					<CaseCard data={cases.florensis2} />
 				</GridItem>
 				<GridItem
 					borderBottom="2px"

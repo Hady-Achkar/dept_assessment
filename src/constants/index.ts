@@ -61,6 +61,10 @@ export const images = {
 		src: require('../assets/images/florensis.png'),
 		name: 'florensis',
 	},
+	florensis2: {
+		src: 'https://s3-eu-central-1.amazonaws.com/florensis-dam-prod/preview/Verbena-peruviana-Lobster-Fest_36987_3.jpg?changed=637435523596100000',
+		name: 'florensis',
+	},
 	gemeentemuseum: {
 		src: require('../assets/images/gemeentemuseum.png'),
 		name: 'gemeentemuseum',

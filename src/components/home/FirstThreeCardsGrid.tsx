@@ -57,7 +57,7 @@ const FirstThreeCardsGrid = () => {
 					paddingRight={useBreakpointValue({base: 0, lg: '40px'})}
 					paddingLeft="10px"
 				>
-					<CaseCard data={cases.florensis} />
+					<CaseCard data={cases.florensis2} />
 				</GridItem>
 				<GridItem borderY="2px" borderColor="gray.100" colSpan={9} rowSpan={1}>
 					<CaseCard data={cases.microsoft} />
