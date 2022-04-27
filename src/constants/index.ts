@@ -104,7 +104,7 @@ export const images = {
 
 export const ApiEndpoints = {
 	CONTACTS: {
-		BASE_URL: 'http://localhost:5000/contacts',
+		BASE_URL: 'https://dept-api.abaalltheway.com/contacts',
 		ADD_CONTACT: {
 			URL: '/',
 			METHOD: 'POST',
@@ -115,7 +115,7 @@ export const ApiEndpoints = {
 		},
 	},
 	CASES: {
-		BASE_URL: 'http://localhost:5000/cases',
+		BASE_URL: 'https://dept-api.abaalltheway.com/cases',
 		ADD_CASE: {
 			URL: '/',
 			METHOD: 'POST',
