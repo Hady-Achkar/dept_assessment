@@ -1,15 +1,5 @@
 import {ArrowBackIcon} from '@chakra-ui/icons'
-import {
-	Box,
-	Text,
-	Flex,
-	Heading,
-	Image,
-	VStack,
-	IconButton,
-	HStack,
-	Container,
-} from '@chakra-ui/react'
+import {Box, Text, Flex, Image, IconButton, HStack} from '@chakra-ui/react'
 import {motion, useAnimation} from 'framer-motion'
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'

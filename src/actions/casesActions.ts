@@ -1,4 +1,4 @@
-import {AnyAction, Dispatch} from 'redux'
+import {Dispatch} from 'redux'
 import {AppState} from '../reducers'
 import {
 	CasesActions,
@@ -39,7 +39,7 @@ export const filterByWork = (work: string): FilterByWorkActionType => ({
 })
 
 export const startinitCases = () => {
-	return (dispatch: Dispatch<CasesActions | AnyAction>, _: () => AppState) => {
+	return (dispatch: Dispatch<CasesActions> | any, _: () => AppState) => {
 		dispatch(loadState())
 		getCases()
 			.then(({data}) => {

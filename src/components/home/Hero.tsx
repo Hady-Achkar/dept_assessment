@@ -34,12 +34,25 @@ const Hero = () => {
 
 	const isVisible = !!entry?.isIntersecting
 	const [isDesktopView] = useMediaQuery('(min-width: 700px)')
+	const headerControls = useAnimation()
 
 	useEffect(() => {
+		headerControls.start('visible')
 		if (isVisible) {
 			controls.start('visible')
 		}
-	}, [controls, isVisible])
+	}, [controls, headerControls, isVisible])
+
+	const headerVariant = {
+		hidden: {y: -1000},
+		visible: {
+			y: 0,
+			transition: {
+				delay: 0.1,
+				duration: 1,
+			},
+		},
+	}
 	return (
 		<Box maxW={'100%'} maxH={'100vh'}>
 			<Box
@@ -66,6 +79,11 @@ const Hero = () => {
 						fontWeight="normal"
 						className="font-teko"
 						lineHeight={'575px'}
+						as={motion.div}
+						ref={ref}
+						animate={headerControls}
+						initial="hidden"
+						variants={headerVariant}
 						marginY="auto"
 						fontSize={useBreakpointValue({
 							base: '170px',

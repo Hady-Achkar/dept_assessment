@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-	CaseCard,
 	ClientsSection,
 	Footer,
 	FirstFourCardsGrid,
@@ -8,11 +7,12 @@ import {
 	FirstThreeCardsGrid,
 	SecondThreeCardsGrid,
 	SecondFourCardsGrid,
+	Testimonial,
+	TwoCardsGrid,
 } from '../components'
 import {Select} from '@chakra-ui/select'
 import {Flex, HStack, SimpleGrid, Text} from '@chakra-ui/layout'
 import {useBreakpointValue} from '@chakra-ui/media-query'
-import {cases as mockCases} from '../data/mock'
 import {Container} from '@chakra-ui/react'
 import Contact from '../components/home/Contact'
 
@@ -84,36 +84,8 @@ const Home = () => {
 				<FirstThreeCardsGrid />
 				<SecondFourCardsGrid />
 				<SecondThreeCardsGrid />
-				<Container
-					textAlign={useBreakpointValue({base: 'justify', lg: 'center'})}
-					maxW="4xl"
-					marginY="48px"
-				>
-					<Text
-						fontWeight="400"
-						fontSize={useBreakpointValue({base: '24px', lg: '36px'})}
-						lineHeight="52px"
-						marginBottom="33px"
-						className="font-teko"
-					>
-						“Dept helped us tell our story through a bold new identity and a
-						robust online experience. To the tune of 60% growth in online
-						bookings in just one month.”
-					</Text>
-					<Text fontSize="13px" lineHeight="15px" fontWeight="bold">
-						MATTIJS TEN BRINK – CEO, TRANSAVIA
-					</Text>
-				</Container>
-				<SimpleGrid
-					className="container"
-					columns={useBreakpointValue({base: 1, lg: 2})}
-					marginX="auto"
-					spacingY="3"
-					spacingX="10"
-				>
-					<CaseCard data={mockCases.libertyGlobal} />
-					<CaseCard data={mockCases.arla} />
-				</SimpleGrid>
+				<Testimonial />
+				<TwoCardsGrid />
 			</Container>
 			<ClientsSection />
 			<Container
