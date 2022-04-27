@@ -26,6 +26,11 @@ export const cases = {
 		title: 'FLORENSIS',
 		text: 'Rethinking the entire online ecosystem',
 	},
+	florensis2: {
+		image: images.florensis2.src,
+		title: 'FLORENSIS',
+		text: 'Rethinking the entire online ecosystem',
+	},
 	microsoft: {
 		title: 'MICROSOFT',
 		text: "Tapping into Ireland's unique gaming culture and bringing a fresh flavor to their Xbox social media channels",
