@@ -26,7 +26,7 @@ const NewCard: React.FC<Props> = ({data, type}) => {
 	const {_id, title, thumbnail, content} = data
 
 	const imageWidth = useBreakpointValue({
-		base: '100%',
+		base: '400px',
 		md: '400px',
 		lg: '800px',
 	})

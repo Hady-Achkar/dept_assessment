@@ -23,6 +23,7 @@ import {
 	IconButton,
 	Select,
 	useBreakpointValue,
+	Stack,
 } from '@chakra-ui/react'
 import React, {useCallback, useEffect, useState} from 'react'
 import {Footer, Header, NewCard} from '../components'
@@ -149,34 +150,86 @@ const Technical = () => {
 				maxW="full"
 				paddingX={useBreakpointValue({base: '36px', lg: '80px'})}
 			>
-				<Flex justify={'space-between'} marginTop="70px" marginBottom="40px">
-					<HStack spacing="4">
-						<Button onClick={onOpen}>Create a case</Button>
-						<Text className="font-teko" fontSize="24px">
-							VIEW TYPE
-						</Text>
-						<IconButton
-							onClick={() => setViewType('Grid')}
-							aria-label="Grid"
-							border={viewType === 'Grid' ? '2px' : '0'}
-							borderColor="#1A18F7"
-							icon={<DragHandleIcon />}
-						/>
-						<IconButton
-							onClick={() => setViewType('List')}
-							aria-label="List"
-							border={viewType === 'List' ? '2px' : '0'}
-							borderColor="#1A18F7"
-							icon={<HamburgerIcon />}
-						/>
-					</HStack>
-					<Flex className="font-teko">
+				<Flex
+					justifyContent={useBreakpointValue({
+						base: 'center',
+						lg: 'space-between',
+					})}
+					align={useBreakpointValue({
+						base: 'flex-start',
+						lg: 'center',
+					})}
+					flexDir={useBreakpointValue({base: 'column', lg: 'row'})}
+					marginTop={useBreakpointValue({base: '30px', lg: '70'})}
+					marginBottom="40px"
+					width="full"
+				>
+					<Stack
+						flexDir={useBreakpointValue({base: 'column', lg: 'row'})}
+						justifyContent={useBreakpointValue({
+							base: 'center',
+							lg: 'space-between',
+						})}
+						align={useBreakpointValue({
+							base: 'flex-start',
+							lg: 'space-between',
+						})}
+						spacing="4"
+						marginX={useBreakpointValue({
+							base: 'auto',
+							lg: '',
+						})}
+					>
+						<Stack
+							spacing={4}
+							direction={useBreakpointValue({base: 'column', lg: 'row'})}
+						>
+							<Button
+								marginY={useBreakpointValue({base: '20px', lg: '0'})}
+								width={useBreakpointValue({base: '100%', lg: 'auto'})}
+								onClick={onOpen}
+								className="font-teko"
+							>
+								Create a case
+							</Button>
+							<Stack direction={'row'} align="center">
+								<Text className="font-teko" fontSize="16px">
+									VIEW TYPE
+								</Text>
+								<IconButton
+									onClick={() => setViewType('Grid')}
+									aria-label="Grid"
+									border={viewType === 'Grid' ? '2px' : '0'}
+									borderColor="#1A18F7"
+									icon={<DragHandleIcon />}
+								/>
+								<IconButton
+									onClick={() => setViewType('List')}
+									aria-label="List"
+									border={viewType === 'List' ? '2px' : '0'}
+									borderColor="#1A18F7"
+									icon={<HamburgerIcon />}
+								/>
+							</Stack>
+						</Stack>
+					</Stack>
+					<Flex
+						flexDir={useBreakpointValue({base: 'column', lg: 'row'})}
+						className="font-teko"
+						marginX={useBreakpointValue({
+							base: 'auto',
+							lg: '',
+						})}
+					>
 						<SimpleGrid
 							columns={useBreakpointValue({base: 1, lg: 2})}
 							fontSize={fontSize}
 							maxW={useBreakpointValue({base: '100%', lg: '2xl'})}
 						>
-							<HStack spacing="3">
+							<HStack
+								spacing="3"
+								marginTop={useBreakpointValue({base: '20px', lg: '0'})}
+							>
 								<Text color="#A3A3A3">In</Text>
 								<Select
 									fontSize={fontSize}
@@ -184,7 +237,6 @@ const Technical = () => {
 									onChange={handleSelect}
 									variant="flushed"
 									colorScheme="blackAlpha"
-									style={{width: 200}}
 									id="industry"
 									focusBorderColor="black"
 								>
@@ -200,7 +252,11 @@ const Technical = () => {
 								</Select>
 							</HStack>
 
-							<HStack spacing="3">
+							<Stack
+								direction={useBreakpointValue({base: 'column', lg: 'row'})}
+								spacing="4"
+								marginY={useBreakpointValue({base: '20px', lg: '0'})}
+							>
 								<Text overflowWrap="normal" color="#A3A3A3">
 									ShowMe
 								</Text>
@@ -210,7 +266,6 @@ const Technical = () => {
 									variant="flushed"
 									maxW="100%"
 									id="work"
-									style={{width: 200}}
 									placeholder="All Work"
 									focusBorderColor="black"
 								>
@@ -227,8 +282,14 @@ const Technical = () => {
 										Media
 									</option>
 								</Select>
-								<Button onClick={resetFilters}>Reset</Button>
-							</HStack>
+								<Button
+									marginY={useBreakpointValue({base: '20px', lg: '0'})}
+									onClick={resetFilters}
+									width={useBreakpointValue({base: '100%', lg: 'auto'})}
+								>
+									Reset
+								</Button>
+							</Stack>
 						</SimpleGrid>
 					</Flex>
 				</Flex>
