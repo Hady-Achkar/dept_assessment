@@ -64,6 +64,7 @@ const Case = () => {
 	}, [caseId])
 
 	useEffect(() => {
+		window.scrollTo(0, 0)
 		fetchCase()
 	}, [fetchCase])
 
