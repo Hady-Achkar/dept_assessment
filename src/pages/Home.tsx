@@ -119,15 +119,18 @@ const Home = () => {
 						</SimpleGrid>
 					</Flex>
 				</Flex>
-				{/* Cards */}
 				<FirstFourCardsGrid />
 				<FirstThreeCardsGrid />
 				<SecondFourCardsGrid />
 				<SecondThreeCardsGrid />
-				<Container textAlign="center" maxW="4xl" marginY="48px">
+				<Container
+					textAlign={useBreakpointValue({base: 'justify', lg: 'center'})}
+					maxW="4xl"
+					marginY="48px"
+				>
 					<Text
 						fontWeight="400"
-						fontSize="36px"
+						fontSize={useBreakpointValue({base: '24px', lg: '36px'})}
 						lineHeight="52px"
 						marginBottom="33px"
 						className="font-teko"
@@ -150,11 +153,11 @@ const Home = () => {
 					<CaseCard data={mockCases.libertyGlobal} />
 					<CaseCard data={mockCases.arla} />
 				</SimpleGrid>
-				<Container></Container>
 			</Container>
 			<ClientsSection />
-			<Contact />
-
+			<Container paddingX={useBreakpointValue({base: '36px', lg: '80px'})}>
+				<Contact />
+			</Container>
 			<Footer />
 		</div>
 	)
