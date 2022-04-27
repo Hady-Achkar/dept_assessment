@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import {motion, useAnimation} from 'framer-motion'
 import {useEffect, useRef} from 'react'
+import {useNavigate} from 'react-router'
 import {images} from '../../constants'
 import {useIntersectionObserver} from '../../hooks'
 import Header from '../common/Header'
@@ -53,6 +54,8 @@ const Hero = () => {
 			},
 		},
 	}
+
+	const navigate = useNavigate()
 	return (
 		<Box maxW={'100%'} maxH={'100vh'}>
 			<Box
@@ -105,6 +108,8 @@ const Hero = () => {
 							borderRadius="0"
 							bgColor="black"
 							color="white"
+							_hover={{bgColor: 'gray.800'}}
+							onClick={() => navigate('/werk')}
 						>
 							VIEW CASE
 						</Button>
