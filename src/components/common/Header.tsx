@@ -65,7 +65,7 @@ const Header = () => {
 				y: 0,
 				transition: {
 					delay: 0.4,
-					duration: 0.5,
+					duration: 1,
 				},
 			},
 		},
