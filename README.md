@@ -44,7 +44,8 @@ It includes
 Prerequisites `Nodejs`, `Typescript` and `npm` installed on your machine. 
 
 `git clone https://github.com/hady-achkar/dept_assessment`
-`npm install` or `yarn`
+
+then run `npm install` or `yarn`
 
 Then run `npm run start` or `yarn start`
 
